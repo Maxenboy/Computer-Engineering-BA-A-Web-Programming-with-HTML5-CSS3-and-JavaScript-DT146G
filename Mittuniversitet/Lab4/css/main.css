@@ -1,0 +1,247 @@
+/*  Max Åberg
+ mabe1411
+ aaberg.max@gmail.com   */
+
+@media handheld and (max-width: 480px) , screen and (max-width: 480px) {
+	html {
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		margin: 0 auto;
+		width: 200px;
+		text-align: center;
+		background: url(../img/background.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		height: 100%
+	}
+
+	li {
+		display: inline;
+	}
+	a:link, a:visited {
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	.opac img {
+		width: 59px;
+		height: 47px;
+		vertical-align: middle;
+	}
+	.span img {
+		width: 119px;
+		height: 94px;
+	}
+	div table tr td {
+		background-color: white;
+		border: 2px solid black;
+		min-width: 1em;
+		width: 1em;
+		max-width: 1em;
+		min-height: 1em;
+		height: 1em;
+		max-height: 1em;
+		text-shadow: none;
+	}
+	div table {
+		margin: 0 auto;
+	}
+	div table tr td:hover {
+		color: black;
+	}
+	#boarding{
+		background: none;
+		color: black;
+		text-shadow: none;
+		font-size: larger;
+	}
+	.description {
+		margin-left: auto;
+		margin-right: auto;
+		background-color: rgba(0, 0, 0, .5);
+	}
+}
+@media only screen and (min-width: 481px) and (max-width: 1024px) {
+	html {
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		margin: 0 auto;
+		width: 500px;
+		text-align: center;
+		background: url(../img/background.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		height: 100%
+	}
+
+	li {
+		display: inline;
+	}
+	a:link, a:visited {
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	footer {
+		font-size: smaller;
+	}
+	.span img {
+		width: 238px;
+		height: 188px;
+	}
+
+	.span {
+		width: 100%;
+		background-color: rgba(0, 0, 0, .5);
+	}
+	.opac {
+		background-color: rgba(0, 0, 0, .2);
+	}
+	.opac img {
+		width: 119px;
+		height: 94px;
+	}
+	div table tr td {
+		background-color: white;
+		border: 2px solid black;
+		min-width: 2em;
+		width: 2em;
+		max-width: 2em;
+		min-height: 2em;
+		height: 2em;
+		max-height: 2em;
+		text-shadow: none;
+	}
+	div table {
+		margin: 0 auto;
+	}
+	div table tr td:hover {
+		color: black;
+	}
+	#wrapper {
+		width: 100%;
+		overflow: hidden;
+		table-layout: fixed;
+	}
+	#wrapper div {
+		display: table-cell;
+		width: 237px;
+		vertical-align: middle
+	}
+	#boarding{
+		background: none;
+		color: black;
+		text-shadow: none;
+		font-size: larger;
+	}
+	.description {
+		margin-left: auto;
+		margin-right: auto;
+		background-color: rgba(0, 0, 0, .5);
+	}
+
+}
+@media only screen and (min-width: 1025px) {
+	html {
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+		margin: 0 auto;
+		width: 960px;
+		text-align: center;
+		background: url(../img/background.jpg) no-repeat center center fixed;
+		-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;
+		height: 100%
+	}
+
+	li {
+		display: inline;
+	}
+	a:link, a:visited {
+		color: white;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+	}
+	footer {
+		font-size: smaller;
+	}
+	.span {
+		width: 100%;
+		background-color: rgba(0, 0, 0, .5);
+	}
+	.span img {
+		width: 476px;
+		height: 376px;
+	}
+	.opac {
+		background-color: rgba(0, 0, 0, .2);
+	}
+	.opac img {
+		width: 238px;
+		height: 188px;
+	}
+	.map {
+		height: 500px;
+		width: 600px;
+		text-shadow: none;
+		color: black;
+	}
+	#wrapper {
+		width: 100%;
+		overflow: hidden;
+		table-layout: fixed;
+	}
+	#wrapper div {
+		display: table-cell;
+		width: 472px;
+		vertical-align: middle
+	}
+
+	div table tr td {
+		background-color: white;
+		border: 2px solid black;
+		min-width: 3em;
+		width: 3em;
+		max-width: 3em;
+		min-height: 3em;
+		height: 3em;
+		max-height: 3em;
+		text-shadow: none;
+	}
+	div table {
+		margin: 0 auto;
+	}
+	div table tr td:hover {
+		color: black;
+	}
+	#boarding{
+		background: none;
+		color: black;
+		text-shadow: none;
+		font-size: larger;
+	}
+	.description {
+		margin-left: auto;
+		margin-right: auto;
+		background-color: rgba(0, 0, 0, .5);
+	}
+}
+
+@media print {
+	html {
+		text-align: center;
+	}
+	li {
+		display: inline;
+	}
+	.map {
+		height: 500px;
+		width: 600px;
+		text-shadow: none;
+		color: black;
+	}
+}
+

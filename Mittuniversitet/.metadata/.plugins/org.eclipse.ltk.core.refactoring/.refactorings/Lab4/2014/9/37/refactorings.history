@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;Lab4/Boardingcard.html&apos; to &apos;boardingcard.html&apos;" description="Rename resource &apos;Boardingcard.html&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="Boardingcard.html" name="boardingcard.html" stamp="1410516899063" updateReferences="true"/>
+</session>

@@ -1,0 +1,45 @@
+/*  Max Åberg
+ mabe1411
+ aaberg.max@gmail.com   */
+var nbrOfTeams;
+var ok;
+
+function init() {
+	while (!ok) {
+		hide();
+		nbrOfTeams = prompt("Please specify the number of teams that will participate:");
+		var pattern = /^[2-9]+$|[1-9][0-9]+$/;
+		if (!pattern.test(nbrOfTeams)) {/*add check for empty/null string */
+			window.alert("Sorry, the input can only be numbers and at least 2");
+		} else {
+			ok = true;
+		}
+	}
+}
+
+function hide() {
+	if (document.getElementById("random").checked) {
+		document.getElementById("wrapper").setAttribute("class", "hidden");
+		document.getElementById("wrapper1").setAttribute("class", "");
+	} else {
+		document.getElementById("wrapper1").setAttribute("class", "hidden");
+		document.getElementById("wrapper").setAttribute("class", "");
+	}
+}
+
+function generate() {
+	var text = decodeURIComponent(window.location.search.substring(1)).replace(/\+/g, ' ');
+	var choise = text.substr(text.search("radio") + 6, 6);
+	if (choise == "random") {
+		text = text.substr(text.search("area") + 5, text.length);
+		random(text);
+	} else {
+		var men = text.substr(text.search("mentext") + 8, text.search("w"));
+		document.getElementById("result").innerHTML = men;
+		gender(text);
+	}
+}
+
+function random(text) {
+
+}

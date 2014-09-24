@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<!--  Max Åberg
+mabe1411
+aaberg.max@gmail.com   -->
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>TeamGenerator</title>
+		<link type="text/css" rel="stylesheet" href="css/main.css">
+		<link rel="shortcut icon" type="image/png" href="img/favicon.ico">
+		<script src="javascript/main.js"></script>
+	</head>
+	<body onload="init()">
+		<header>
+			<img src="img/logo.png" alt="TeamGenerator logo"/>
+		</header>
+		<section>
+			<form >
+				<p>
+				<div>
+					<div >
+					<textarea autofocus cols="5" rows="20" wrap="physical" id="result" placeholder="Names of the participants" ></textarea>
+					</div>
+				</div>
+				<p>
+					<a href="index.html"><input type="button" value="Re-generate" /></a>
+					<input type="button" value="Print" onclick="window.print()"/>
+				</p>
+			</form>
+		</section>
+	</body>
+</html>
