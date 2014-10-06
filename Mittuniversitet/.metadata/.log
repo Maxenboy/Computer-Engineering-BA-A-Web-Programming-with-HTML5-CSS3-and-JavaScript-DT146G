@@ -597,3 +597,15 @@ Command-line arguments:  -os win32 -ws win32 -arch x86
 
 !ENTRY org.eclipse.core.jobs 2 2 2014-09-24 00:08:02.952
 !MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: com.aptana.usage.internal.DefaultAnalyticsEventHandler$1
+!SESSION 2014-09-25 11:30:41.363 -----------------------------------------------
+eclipse.buildId=3.6.0.201407100658
+java.version=1.7.0_51
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86, WS=win32, NL=en_US
+Command-line arguments:  -os win32 -ws win32 -arch x86
+
+!ENTRY com.aptana.php.debug.epl 4 4 2014-09-25 12:41:11.100
+!MESSAGE class org2.eclipse.php.internal.debug.core.xdebug.dbgp.session.DBGpSession : Unexpected null from readResponse waiting for Init
+
+!ENTRY com.aptana.js.debug.core 4 0 2014-09-25 17:17:17.766
+!MESSAGE Configured browser C:\Program Files (x86)\Google\Chrome\Application\chrome.exe does not support debugging. Currently only Firefox is supported.

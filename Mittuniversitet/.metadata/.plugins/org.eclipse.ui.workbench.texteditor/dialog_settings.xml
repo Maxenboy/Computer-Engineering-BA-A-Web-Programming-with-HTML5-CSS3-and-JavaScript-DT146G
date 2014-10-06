@@ -5,16 +5,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="wholeword"/>
-		<item value="auto" key="selection"/>
+		<item value="nbrOfTeam" key="selection"/>
 		<list key="findhistory">
+			<item value="nbrOfTeam"/>
+			<item value="generate"/>
+			<item value="spellcheck=&quot;false&quot;"/>
 			<item value="auto"/>
 			<item value="onl"/>
 			<item value="on"/>
 			<item value="opac"/>
 			<item value="small"/>
-			<item value="left"/>
-			<item value="head"/>
-			<item value="&lt;table  class=&quot;table&quot;&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&lt;tr&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x09;&lt;td class=&quot;span&quot; id=&quot;description&quot; &gt;&lt;strong&gt; Bombardier BD-700 Global Express &lt;/strong&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x09;&lt;br/&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x09;är en ultra long range affärs- och VIP-höghastighetsjet som också har modifierats för militära operationer.&lt;/td&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&lt;/tr&gt;&#x0A;&#x09;&#x09;&#x09;&lt;/table&gt;&#x0A;&#x09;&#x09;&#x09;&lt;div id=&quot;wrapper&quot;&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&lt;div id=&quot;left&quot; class=&quot;opac&quot;&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x09;&lt;img  src=&quot;img/global.jpg&quot; alt=&quot;Bombardier BD-700 Global Express&quot; id=&quot;global&quot; onclick=&quot;LoadImage(&apos;global&apos;)&quot;/&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x09;&lt;img src=&quot;img/challenger.jpg&quot; alt=&quot;Bombardier Challenger 600-serien&quot; id=&quot;challenger&quot; onclick=&quot;LoadImage(&apos;challenger&apos;)&quot; /&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x09;&lt;img src=&quot;img/gulfstream.jpg&quot; alt=&quot;Gulfstream&quot; id=&quot;gulf&quot; onclick=&quot;LoadImage(&apos;gulf&apos;)&quot; /&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x09;&lt;img src=&quot;img/hawker.jpg&quot; alt=&quot;Hawker 800&quot; id=&quot;hawk&quot; onclick=&quot;LoadImage(&apos;hawk&apos;)&quot; /&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&lt;/div&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&lt;div&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&#x09;&lt;img class=&quot;span&quot; src=&quot;img/global.jpg&quot; alt=&quot;Bombardier BD-700 Global Express&quot; id=&quot;big&quot;/&gt;&#x0A;&#x09;&#x09;&#x09;&#x09;&lt;/div&gt;&#x0A;&#x09;&#x09;&#x09;&lt;/div&gt;"/>
 		</list>
 	</section>
 </section>
