@@ -45,7 +45,7 @@ aaberg.max@gmail.com   -->
 				är en ultra long range affärs- och VIP-höghastighetsjet som också har modifierats för militära operationer.
 			</div>
 			<div id="wrapper">
-				<div class="opac" id="left">
+				<div class="opac">
 					<div>
 						<img  src="img/global.jpg" alt="Bombardier BD-700 Global Express" id="global" />
 						<img src="img/challenger.jpg" alt="Bombardier Challenger 600-serien" id="challenger" />

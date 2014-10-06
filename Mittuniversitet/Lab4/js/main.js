@@ -77,9 +77,22 @@ function getBrowser() {
 	return s;
 }
 
-function LoadImage(name) {
-	document.getElementById("big").src = document.getElementById(name).src;
-	switch(name) {
+function init() {
+	checkBooked(seats);
+}
+
+function addEvent() {
+	document.getElementById("left").addEventListener("click", enlarge, false);
+}
+
+function clickSeats() {
+	document.getElementById("first").addEventListener("click", LoadSeat, false);
+	document.getElementById("second").addEventListener("click", LoadSeat, false);
+}
+
+function enlarge(e) {
+	document.getElementById("big").src = e.srcElement.src;
+	switch(e.srcElement.id) {
 	case "global":
 		document.getElementById("description").innerHTML = "<strong> Bombardier BD-700 Global Express </strong><br/>	är en ultra long range affärs- och VIP-höghastighetsjet som också har modifierats för militära operationer.";
 		break;
@@ -108,23 +121,17 @@ function LoadImage(name) {
 		document.getElementById("description").innerHTML = "<strong> Bombardier BD-700 Global Express </strong><br/>	är en ultra long range affärs- och VIP-höghastighetsjet som också har modifierats för militära operationer.";
 		break;
 	}
-
 }
 
-function LoadSeat(name) {
-	if (document.getElementById(name).style.backgroundColor != "red") {
-		document.getElementById("seat").value = parseInt(document.getElementById(name).innerHTML);
+function LoadSeat(e) {
+	if (document.getElementById(e.srcElement.id).style.backgroundColor != "red") {
+		document.getElementById("seat").value = parseInt(document.getElementById(e.srcElement.id).innerHTML);
 		if (name < 7) {
 			document.getElementById("business").checked = true;
 		} else {
 			document.getElementById("business").checked = false;
 		}
 	}
-}
-
-function init() {
-	checkBooked(seats);
-
 }
 
 function checkBooked(array) {
@@ -157,4 +164,6 @@ function booking() {
 }
 
 window.addEventListener("load", init, false);
+window.addEventListener("load", addEvent, false);
+window.addEventListener("load", clickSeats, false);
 
