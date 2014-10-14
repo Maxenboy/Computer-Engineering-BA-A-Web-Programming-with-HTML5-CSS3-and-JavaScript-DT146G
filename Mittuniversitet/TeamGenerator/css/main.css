@@ -11,8 +11,8 @@ section {
 	margin: 0% 15% 0% 15%;
 }
 header img {
-	max-width: 20%;
-	max-height: 20%;
+	max-width: 15%;
+	max-height: 15%;
 }
 #wrapper {
 	width: 100%;
@@ -27,11 +27,31 @@ header img {
 textarea {
 	width: 85%;
 	resize: none;
+	font-family: Papyrus, fantasy;
+	font-weight: 700;
+	font-variant:small-caps;
+	
 }
-
+#result{
+	font-family: Papyrus, fantasy;
+	font-weight: 700;
+	font-variant:small-caps;
+	text-align: left;
+}
 .hidden {
 	display: none;
 }
+h1 {
+  position: relative;
+  border-color: #eee;
+  border-style: solid;
+  background: #fff;
+  margin: 0 0 15px -15px;
+  padding: 5px 15px;
+}
+
+
+
 
 @media print {
 	html {

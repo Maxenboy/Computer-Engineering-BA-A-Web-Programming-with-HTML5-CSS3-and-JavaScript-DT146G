@@ -5,16 +5,16 @@
 		<item value="false" key="isRegEx"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="wholeword"/>
-		<item value="left" key="selection"/>
+		<item value="seats" key="selection"/>
 		<list key="findhistory">
+			<item value="seats"/>
+			<item value="src"/>
 			<item value="left"/>
 			<item value="nbrOfTeam"/>
 			<item value="generate"/>
 			<item value="spellcheck=&quot;false&quot;"/>
 			<item value="auto"/>
 			<item value="onl"/>
-			<item value="on"/>
-			<item value="opac"/>
 		</list>
 	</section>
 </section>

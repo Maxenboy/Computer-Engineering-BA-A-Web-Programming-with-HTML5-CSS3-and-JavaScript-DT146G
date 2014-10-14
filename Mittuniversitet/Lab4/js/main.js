@@ -2,61 +2,6 @@
  mabe1411
  aaberg.max@gmail.com   */
 var s, sUsrAg = navigator.userAgent, url;
-var seats = [{
-	"nbr" : "1",
-	"booked" : "true"
-}, {
-	"nbr" : "2",
-	"booked" : "false"
-}, {
-	"nbr" : "3",
-	"booked" : "false"
-}, {
-	"nbr" : "4",
-	"booked" : "false"
-}, {
-	"nbr" : "5",
-	"booked" : "false"
-}, {
-	"nbr" : "6",
-	"booked" : "false"
-}, {
-	"nbr" : "7",
-	"booked" : "false"
-}, {
-	"nbr" : "8",
-	"booked" : "false"
-}, {
-	"nbr" : "9",
-	"booked" : "false"
-}, {
-	"nbr" : "10",
-	"booked" : "false"
-}, {
-	"nbr" : "11",
-	"booked" : "false"
-}, {
-	"nbr" : "12",
-	"booked" : "false"
-}, {
-	"nbr" : "13",
-	"booked" : "false"
-}, {
-	"nbr" : "14",
-	"booked" : "false"
-}, {
-	"nbr" : "15",
-	"booked" : "true"
-}, {
-	"nbr" : "16",
-	"booked" : "false"
-}, {
-	"nbr" : "17",
-	"booked" : "false"
-}, {
-	"nbr" : "18",
-	"booked" : "false"
-}];
 
 function getBrowser() {
 	navigator = window.navigator;
@@ -78,7 +23,68 @@ function getBrowser() {
 }
 
 function init() {
-	checkBooked(seats);
+	var seats = [{
+		"nbr" : "1",
+		"booked" : "true"
+	}, {
+		"nbr" : "2",
+		"booked" : "false"
+	}, {
+		"nbr" : "3",
+		"booked" : "false"
+	}, {
+		"nbr" : "4",
+		"booked" : "false"
+	}, {
+		"nbr" : "5",
+		"booked" : "false"
+	}, {
+		"nbr" : "6",
+		"booked" : "false"
+	}, {
+		"nbr" : "7",
+		"booked" : "false"
+	}, {
+		"nbr" : "8",
+		"booked" : "false"
+	}, {
+		"nbr" : "9",
+		"booked" : "false"
+	}, {
+		"nbr" : "10",
+		"booked" : "false"
+	}, {
+		"nbr" : "11",
+		"booked" : "false"
+	}, {
+		"nbr" : "12",
+		"booked" : "false"
+	}, {
+		"nbr" : "13",
+		"booked" : "false"
+	}, {
+		"nbr" : "14",
+		"booked" : "false"
+	}, {
+		"nbr" : "15",
+		"booked" : "true"
+	}, {
+		"nbr" : "16",
+		"booked" : "false"
+	}, {
+		"nbr" : "17",
+		"booked" : "false"
+	}, {
+		"nbr" : "18",
+		"booked" : "false"
+	}];
+	var array = sessionStorage.getItem("places");
+	if (!array) {
+		sessionStorage.setItem("places", JSON.stringify(seats));
+	}
+	var sittings = JSON.parse(sessionStorage.getItem("places"));
+	checkBooked(sittings);
+
 }
 
 function addEvent() {
@@ -88,6 +94,10 @@ function addEvent() {
 function clickSeats() {
 	document.getElementById("first").addEventListener("click", LoadSeat, false);
 	document.getElementById("second").addEventListener("click", LoadSeat, false);
+}
+
+function book() {
+	document.getElementById("sub").addEventListener("click", booking, false);
 }
 
 function enlarge(e) {
@@ -125,8 +135,8 @@ function enlarge(e) {
 
 function LoadSeat(e) {
 	if (document.getElementById(e.srcElement.id).style.backgroundColor != "red") {
-		document.getElementById("seat").value = parseInt(document.getElementById(e.srcElement.id).innerHTML);
-		if (name < 7) {
+		document.getElementById("seat").value = parseInt(document.getElementById(e.srcElement.id).innerHTML, 10);
+		if (document.getElementById("seat").value < 7) {
 			document.getElementById("business").checked = true;
 		} else {
 			document.getElementById("business").checked = false;
@@ -143,7 +153,8 @@ function checkBooked(array) {
 }
 
 function booking() {
-	if (seats[document.getElementById("seat").value - 1].booked == "true") {
+	var chairs = JSON.parse(sessionStorage.getItem("places"));
+	if (chairs[document.getElementById("seat").value - 1].booked == "true") {
 		window.alert("Platsen är redan bokad, välj en annan");
 	} else {
 		var surname = document.getElementById("surname").value;
@@ -151,12 +162,13 @@ function booking() {
 		var seat = document.getElementById("seat").value;
 		var business = document.getElementById("business").checked;
 		var plain = document.getElementById("plain").value;
-		if ((business && parseInt(seat) < 7) || (!business && parseInt(seat) > 6)) {
+		if ((business && parseInt(seat, 10) < 7) || (!business && parseInt(seat, 10) > 6)) {
 			business = ((business) ? "Affärsklass" : "Turistklass");
+			chairs[document.getElementById("seat").value - 1].booked = "true";
+			sessionStorage.setItem("places", JSON.stringify(chairs));
+			checkBooked(chairs);
 			var opened = window.open("");
-			opened.document.write("<html id=\"boarding\"><head><meta charset=\"utf-8\" /><link type=\"text/css\" rel=\"stylesheet\" href=\"css/main.css\"><script src=\"js/main.js\"></script><title>Boardingkort</title></head><body><header><img src=\"img/logga.png\" alt=\"MaxFlyg logga\"/></header>Boardingkort<hr/><section>" + plain + "<br/>" + surname + "   " + lastname + "<br/>" + "Plats: " + seat + "<br/>" + business + "<br/><img src=\"img/qr.png\" alt=\"QR-kod\"/></section></body></html>");
-			seats[document.getElementById("seat").value - 1].booked = "true";
-			checkBooked(seats);
+			opened.document.write("<html id=\"boarding\"><head><meta charset=\"utf-8\" /><link type=\"text/css\" rel=\"stylesheet\" href=\"css/main.css\"><title>Boardingkort</title></head><body><header><img src=\"img/logga.png\" alt=\"MaxFlyg logga\"/></header>Boardingkort<hr/><section>" + plain + "<br/>" + surname + "   " + lastname + "<br/>" + "Plats: " + seat + "<br/>" + business + "<br/><img src=\"img/qr.png\" alt=\"QR-kod\"/></section></body></html>");
 		} else {
 			window.alert("Platsen du försöker boka stämmer inte överens med typ av klass");
 		}
@@ -166,4 +178,5 @@ function booking() {
 window.addEventListener("load", init, false);
 window.addEventListener("load", addEvent, false);
 window.addEventListener("load", clickSeats, false);
+window.addEventListener("load", book, false);
 

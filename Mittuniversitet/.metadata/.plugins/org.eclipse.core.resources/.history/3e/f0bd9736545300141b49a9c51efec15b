@@ -1,0 +1,67 @@
+/*  Max Åberg
+ mabe1411
+ aaberg.max@gmail.com   */
+
+html {
+	background: url(../img/skulls.png) fixed;
+	text-align: center;
+}
+section {
+	background-color: rgba(255,255,255,.6);
+	margin: 0% 15% 0% 15%;
+}
+header img {
+	max-width: 15%;
+	max-height: 15%;
+}
+#wrapper {
+	width: 100%;
+	overflow: hidden;
+	table-layout: fixed;
+}
+#wrapper div {
+	display: table-cell;
+	width: 472px;
+	vertical-align: middle
+}
+textarea {
+	width: 85%;
+	resize: none;
+	font-family: Papyrus, fantasy;
+	font-weight: 700;
+	font-variant:small-caps;
+	
+}
+#result{
+	font-family: Papyrus, fantasy;
+	font-weight: 700;
+	font-variant:small-caps;
+	text-align: left;
+}
+.hidden {
+	display: none;
+}
+h1 {
+  position: relative;
+  border-color: #eee;
+  border-style: solid;
+  background: #fff;
+  margin: 0 0 15px -15px;
+  padding: 5px 15px;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+  text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135;
+}
+
+
+
+@media print {
+	html {
+		text-align: center;
+	}
+	input {
+		display: none;
+	}
+	textarea {
+		border: none;
+	}
+}

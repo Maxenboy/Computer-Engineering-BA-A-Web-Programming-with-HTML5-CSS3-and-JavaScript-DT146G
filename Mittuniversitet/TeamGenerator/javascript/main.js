@@ -61,26 +61,47 @@ function random(names) {
 	switch(true) {
 	case (rest==1):
 		for ( i = 0; i < nbrOfTeams; i++) {
-			distribution += ("Team" + (i + 1) + "<br>");
-			for ( j = 0; j < rest + minimumParticipants; j++) {
-				index = Math.random((Math.floor * names.length));
-				/*wrong*/
+			distribution += ("<h1><u>Team " + (i + 1) + "</u></h1>");
+			for ( j = 0; j < minimumParticipants + 1; j++) {
+				index = Math.floor((Math.random() * names.length));
 				distribution += names[index] + "<br>";
 				names.splice(index, 1);
 			}
-			distribution += "<br><br>";
-			rest = 0;
 		}
 		break;
 	case (rest>1):
+		var count = 0;
+		for ( i = 0; i < nbrOfTeams; i++) {
+			distribution += ("<h1><u>Team " + (i + 1) + "</u></h1>");
+			if (count < rest) {
+				for ( j = 0; j < minimumParticipants + 1; j++) {
+					index = Math.floor((Math.random() * names.length));
+					distribution += names[index] + "<br>";
+					names.splice(index, 1);
+				}
+			}
+		}
 		distribution += rest;
 		break;
 	default:
 		distribution += "normal";
 	}
-	/*document.getElementById("result").innerHTML = distribution;*/
+	document.getElementById("result").innerHTML = distribution;
 }
 
 function gender(men, women) {
 
 }
+
+function arrayFetching(names, diff) {
+
+}
+
+function switchOnRadio() {
+	document.getElementById("random").addEventListener("click", hide, false);
+	document.getElementById("gender").addEventListener("click", hide, false);
+}
+
+window.addEventListener("load", init, false);
+window.addEventListener("load", switchOnRadio, false);
+window.addEventListener("load", generate, false);

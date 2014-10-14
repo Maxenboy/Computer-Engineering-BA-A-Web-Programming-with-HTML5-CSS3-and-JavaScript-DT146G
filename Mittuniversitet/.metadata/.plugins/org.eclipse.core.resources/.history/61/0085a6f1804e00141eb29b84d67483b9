@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<!--  Max Åberg
+mabe1411
+aaberg.max@gmail.com   -->
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>MaxFlyg</title>
+		<link type="text/css" rel="stylesheet" href="css/main.css">
+		<link rel="shortcut icon" type="image/png" href="img/icon.png">
+		<script src="js/main.js"></script>
+	</head>
+	<body>
+		<header>
+
+			<ul>
+				<li>
+					<a href="index.html"><img src="img/logga.png" alt="MaxFlyg logga"/></a>
+				</li>
+			</ul>
+			<ul>
+
+				<li>
+					<a href="airplanes.html">Våra flyg</a>
+				</li>
+				<li>
+					<a href="contact.html">Kontakt</a>
+				</li>
+				<li>
+					<a href="booking.html">Bokning</a>
+				</li>
+				<li>
+					<a href="employees.html">Våra anställda</a>
+				</li>
+			</ul>
+			<hr />
+		</header>
+
+		<section>
+			<h1>Bokning</h1>
+
+			<div id="wrapper" >
+				<div class="opac">
+					<form id="booking" onsubmit="booking();">
+						<p>
+							<label> Flygplan:
+								<select id="plain">
+									<option value="Bombardier BD-700 Global Express">Bombardier BD-700 Global Express</option>
+									<option value="Bombardier Challenger 600-serien">Bombardier Challenger 600-serien</option>
+									<option value="Gulfstream">Gulfstream</option>
+									<option value="Hawker 800">Hawker 800</option>
+								</select>
+							</label>
+						</p>
+						<p>
+							<label> Förnamn:
+								<input id="surname" type="text" size="30" autofocus required/>
+							</label>
+						</p>
+						<p>
+							<label> Efternamn:
+								<input id="lastname" type="text" size="30" required />
+							</label>
+						</p>
+						<p>
+							<label> Första klass
+								<input id="business"  type="checkbox"  />
+							</label>
+							<label> Stolsnr.
+								<input  id="seat" type="number" min="1" max="18" step="1" required/>
+								(1-6 || 7-18) </label>
+						</p>
+						<p>
+							<input type="submit" value="Boka" />
+							<input type="reset" value="Rensa" />
+						</p>
+
+					</form>
+				</div>
+				<div >
+					<table id="first">
+						<caption>
+							Klicka på en ledig plats för att boka!
+						</caption>
+						<tr>
+							<td id="1" >1</td>
+							<td id="2" >2</td>
+							<td id="3" >3</td>
+						</tr>
+						<tr>
+							<td id="4" >4</td>
+							<td id="5" >5</td>
+							<td id="6" >6</td>
+						</tr>
+					</table>
+					Affärsklass
+					<br />
+					<hr />
+					Turistklass
+					<table id="second">
+						<tr>
+							<td id="7" >7</td>
+							<td id="8" >8</td>
+							<td id="9" >9</td>
+						</tr>
+						<tr>
+							<td id="10" >10</td>
+							<td id="11" >11</td>
+							<td id="12" >12</td>
+						</tr>
+						<tr>
+							<td id="13" >13</td>
+							<td id="14" >14</td>
+							<td id="15" >15</td>
+						</tr>
+						<tr>
+							<td id="16" >16</td>
+							<td id="17" >17</td>
+							<td id="18" >18</td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</section>
+		<footer >
+			<hr/>
+			&copy; MaxFlyg Inc. &mdash; Alla rättigheter förbehålls
+			<br/>
+			Kontakt: <a href="mailto:aaberg.max@gmail.com">aaberg.max@gmail.com</a> | 070-5616788
+			<br/>
+			Adress: <a href="contact.html"> Erik Dahlbergsgatan 6, 222220 Lund</a>
+
+		</footer>
+	</body>
+</html>
