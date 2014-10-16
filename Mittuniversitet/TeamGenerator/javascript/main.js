@@ -1,18 +1,25 @@
 /*  Max Åberg
  mabe1411
  aaberg.max@gmail.com   */
-var ok;
-var nbrOfTeams;
+var text = "";
+var ok = false;
+var nbrOfTeams = 0;
+var choice = "";
 var rest;
 var minimumParticipants;
-var endResult;
-var index;
-var names;
+var endResult = "";
+var index = 0;
+var manindex = 0;
+var womenindex = 0;
+var names = [];
+var participants = [];
+var men = [];
+varwomen = [];
 
 function init() {
 	while (!ok) {
 		hide();
-		var nbrOfTeams = prompt("Please specify the number of teams that will participate:");
+		nbrOfTeams = prompt("Please specify the number of teams that will participate:");
 		var pattern = /^[2-9]+$|[1-9][0-9]+$/;
 		if (!pattern.test(nbrOfTeams)) {
 			window.alert("Sorry, the input can only be numbers and at least 2");
@@ -34,70 +41,84 @@ function hide() {
 }
 
 function generate() {
-	var text = decodeURIComponent(window.location.search.substring(1)).replace(/\s+/g, '\\n');
+	text = decodeURIComponent(window.location.search.substring(1)).replace(/\s+/g, '\\n');
 	text = text.replace(/\+/g, ' ');
-	var choise = text.substr(text.search("radio") + 6, 6);
-	if (choise == "random") {
+	choice = text.substr(text.search("radio") + 6, 6);
+	if (choice == "random") {
 		names = text.substring(text.search("area") + 5, text.length).split("\\n");
 		names = names.filter(function(e) {/*Removes white-space elements*/
-			return /\S+/.test(e);
+			return (/\S+/).test(e);
 		});
+		localStorage.setItem('names', JSON.stringify(names));
 		random(names);
 	} else {
-		var men = text.substring(text.search("mentext") + 8, text.search("womentext") - 1).split("\\n");
-		var women = text.substring(text.search("womentext") + 10, text.search("area") - 1).split("\\n");
+		men = text.substring(text.search("mentext") + 8, text.search("womentext") - 1).split("\\n");
+		women = text.substring(text.search("womentext") + 10, text.search("area") - 1).split("\\n");
 		men = men.filter(function(e) {/*Removes white-space elements*/
-			return /\S+/.test(e);
+			return (/\S+/).test(e);
 		});
 		women = women.filter(function(e) {/*Removes white-space elements*/
-			return /\S+/.test(e);
+			return (/\S+/).test(e);
 		});
+		localStorage.setItem('men', JSON.stringify(men));
+		localStorage.setItem('women', JSON.stringify(women));
 		gender(men, women);
 	}
 }
 
 function random(names) {
-	nbrOfTeams = localStorage.getItem('nbrOfTeams');
-	rest = names.length % nbrOfTeams;
-	minimumParticipants = Math.floor(names.length / nbrOfTeams);
-	document.getElementById("result").innerHTML = names.length;
-	endResult = "";
-	index = 0;
-	switch(true) {
-	case (rest==1):
-		for ( i = 0; i < nbrOfTeams; i++) {
-			endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
-			for ( j = 0; j < minimumParticipants + rest; j++) {
-				index = Math.floor((Math.random() * names.length));
-				endResult += names[index] + "<br>";
-				names.splice(index, 1);
+	if (names.length !== 0 && names.length > localStorage.getItem('nbrOfTeams')) {
+		nbrOfTeams = localStorage.getItem('nbrOfTeams');
+		rest = names.length % nbrOfTeams;
+		minimumParticipants = Math.floor(names.length / nbrOfTeams);
+		switch(true) {
+		case (rest==1):
+			for ( i = 0; i < nbrOfTeams; i++) {
+				endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
+				for ( j = 0; j < minimumParticipants + rest; j++) {
+					index = Math.floor((Math.random() * names.length));
+					endResult += names[index] + "<br>";
+					names.splice(index, 1);
+				}
+				rest = 0;
 			}
-			rest = 0;
-		}
-		break;
-	case (rest>1):
-		var count = 0;
-		for ( i = 0; i < nbrOfTeams; i++) {
-			endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
-			if (count < rest) {
-				arrayFetch(1);
-				count++;
-			} else {
+			break;
+		case (rest>1):
+			var count = 0;
+			for ( i = 0; i < nbrOfTeams; i++) {
+				endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
+				if (count < rest) {
+					arrayFetch(1);
+					count++;
+				} else {
+					arrayFetch(0);
+				}
+			}
+			break;
+		default:
+			for ( i = 0; i < nbrOfTeams; i++) {
+				endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
 				arrayFetch(0);
 			}
+			break;
 		}
-		break;
-	default:
-		for ( i = 0; i < nbrOfTeams; i++) {
-			endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
-			arrayFetch(0);
-		}
+	} else {
+		endResult += "Sorry, the number of participants must be greater then the number of teams <br> Please close this tab to re-generate";
 	}
 	document.getElementById("result").innerHTML = endResult;
 }
 
 function gender(men, women) {
-
+	if (men.length != 0 && women.length != 0 && (men.length + women.length) > localStorage.getItem('nbrOfTeams')) {
+		nbrOfTeams = localStorage.getItem('nbrOfTeams');
+		concat(men, women);
+		for ( i = 0; i < participants.length; i++) {
+			endResult += participants[i];
+		}
+	} else {
+		endResult += "Sorry, the number of participants must be greater then the number of teams <br> Please close this tab to re-generate";
+	}
+	document.getElementById("result").innerHTML = endResult;
 }
 
 function arrayFetch(diff) {
@@ -108,11 +129,51 @@ function arrayFetch(diff) {
 	}
 }
 
-function switchOnRadio() {
-	document.getElementById("random").addEventListener("click", hide, false);
-	document.getElementById("gender").addEventListener("click", hide, false);
+function concat(men, women) {
+	var team = 0;
+	var test = 1;
+	for ( i = 0; i < nbrOfTeams; i++) {
+		participants.push("<h1><u>Team " + (i + 1) + "</u></h1>");
+	}
+	while (men.length > 0) {
+		manindex = Math.floor((Math.random() * men.length));
+		participants[team] += (men[manindex]) + test + "<br>";
+		men.splice(manindex, 1);
+		test++;
+		team++;
+		if (team >= nbrOfTeams) {
+			team = 0;
+		}
+	}
+	while (women.length > 0) {
+		womenindex = Math.floor((Math.random() * women.length));
+		participants[team] += (women[womenindex]) + test + "<br>";
+		women.splice(womenindex, 1);
+		test++;
+		team++;
+		if (team >= nbrOfTeams) {
+			team = 0;
+		}
+	}
 }
 
-window.addEventListener("load", init, false);
+function switchOnRadio() {
+	var path = window.location.pathname;
+	var page = path.substring(path.lastIndexOf('/') + 1);
+	if (page == "index.html") {
+		document.getElementById("random").addEventListener("click", hide, false);
+		document.getElementById("gender").addEventListener("click", hide, false);
+	}
+}
+
+function view() {
+	var path = window.location.pathname;
+	var page = path.substring(path.lastIndexOf('/') + 1);
+	if (page == "view.html") {
+		generate();
+	}
+}
+
 window.addEventListener("load", switchOnRadio, false);
-window.addEventListener("load", generate, false);
+window.addEventListener("load", view, false);
+window.addEventListener("load", init, false);

@@ -2,6 +2,14 @@
  mabe1411
  aaberg.max@gmail.com   */
 
+@font-face {
+	font-family: Resultfont;
+	src: url(../font/UpperEastSide.ttf);
+}
+@font-face {
+	font-family: Writefont;
+	src: url(../font/1942.ttf);
+}
 html {
 	background: url(../img/skulls.png) fixed;
 	text-align: center;
@@ -27,31 +35,31 @@ header img {
 textarea {
 	width: 85%;
 	resize: none;
-	font-family: Papyrus, fantasy;
-	font-weight: 700;
-	font-variant:small-caps;
-	
+	font-family: Writefont;
+	font-size: 40px;
 }
-#result{
-	font-family: Papyrus, fantasy;
+#result {
+	font-family: Resultfont;
+	font-size: 30px;
 	font-weight: 700;
-	font-variant:small-caps;
 	text-align: left;
 }
 .hidden {
 	display: none;
 }
 h1 {
-  position: relative;
-  border-color: #eee;
-  border-style: solid;
-  background: #fff;
-  margin: 0 0 15px -15px;
-  padding: 5px 15px;
+	position: relative;
+	border-color: #eee;
+	border-style: solid;
+	background: #fff;
+	margin: 0 0 0px -15px;
+	padding: 5px 15px;
 }
-
-
-
+footer a{
+	display: inline-block;
+	max-width: 15%;
+	max-height: 15%;
+}
 
 @media print {
 	html {
@@ -61,6 +69,9 @@ h1 {
 		display: none;
 	}
 	textarea {
+		border: none;
+	}
+	h1{
 		border: none;
 	}
 }

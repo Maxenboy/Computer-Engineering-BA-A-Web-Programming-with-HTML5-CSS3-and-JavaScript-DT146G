@@ -1,29 +1,30 @@
-Logger started at: den 8 oktober 2014 kl 2:57 CEST
+Logger started at: den 15 oktober 2014 kl 23:54 CEST
 Component: com.aptana.js.debug.core
 Version: 3.0.3.1399489002
-[57:20.511] Sent: >21*1412729840511*version<
-[57:20.512] Recv: >1412729840511*1*1.0.2.1<
-[57:20.514] Sent: >36*1412729840512*option*monitorXHR*true<
-[57:20.515] Recv: >1412729840512*!unknown option <monitorXHR><
-[57:20.515] Sent: >45*1412729840513*option*suspendOnFirstLine*false<
-[57:20.516] Recv: >1412729840513<
-[57:20.516] Sent: >46*1412729840514*option*suspendOnExceptions*false<
-[57:20.517] Recv: >1412729840514<
-[57:20.518] Sent: >41*1412729840515*option*suspendOnErrors*true<
-[57:20.519] Recv: >1412729840515<
-[57:20.519] Sent: >43*1412729840516*option*suspendOnKeywords*true<
-[57:20.520] Recv: >1412729840516<
-[57:20.520] Sent: >45*1412729840517*option*bypassConstructors*false<
-[57:20.521] Recv: >1412729840517*!unknown option <bypassConstructors><
-[57:20.521] Sent: >45*1412729840518*option*stepFiltersEnabled*false<
-[57:20.523] Recv: >1412729840518*!unknown option <stepFiltersEnabled><
-[57:20.523] Sent: >30*1412729840519*detailFormatters<
-[57:20.524] Recv: >1412729840519<
-[57:20.524] Sent: >79*1412729840520*breakpoint*create*http://127.0.0.1:8020/Test/js/main.js*83*1*0**1<
-[57:20.525] Recv: >1412729840520*created<
-[57:20.526] Sent: >20*1412729840521*enable<
-[57:20.527] Recv: >resumed*start<
-[57:20.527] Recv: >1412729840521<
-[57:20.527] Sent: >61*1412729840522*openUrl*http://127.0.0.1:8020/Test/booking.html<
-[57:20.530] Recv: >1412729840522<
+[54:30.406] Sent: >21*1413410070401*version<
+[54:30.408] Recv: >1413410070401*1*1.0.2.1<
+[54:30.412] Sent: >36*1413410070402*option*monitorXHR*true<
+[54:30.414] Recv: >1413410070402*!unknown option <monitorXHR><
+[54:30.414] Sent: >45*1413410070403*option*suspendOnFirstLine*false<
+[54:30.416] Recv: >1413410070403<
+[54:30.416] Sent: >46*1413410070404*option*suspendOnExceptions*false<
+[54:30.417] Recv: >1413410070404<
+[54:30.418] Sent: >41*1413410070405*option*suspendOnErrors*true<
+[54:30.419] Recv: >1413410070405<
+[54:30.419] Sent: >43*1413410070406*option*suspendOnKeywords*true<
+[54:30.421] Recv: >1413410070406<
+[54:30.421] Sent: >45*1413410070407*option*bypassConstructors*false<
+[54:30.422] Recv: >1413410070407*!unknown option <bypassConstructors><
+[54:30.423] Sent: >45*1413410070408*option*stepFiltersEnabled*false<
+[54:30.424] Recv: >1413410070408*!unknown option <stepFiltersEnabled><
+[54:30.425] Sent: >45*1413410070410*option*stepFiltersEnabled*false<
+[54:30.425] Sent: >30*1413410070409*detailFormatters<
+[54:30.426] Recv: >1413410070410*!unknown option <stepFiltersEnabled><
+[54:30.427] Recv: >1413410070409<
+[54:30.428] Sent: >97*1413410070411*breakpoint*create*http://127.0.0.1:8020/TeamGenerator/javascript/main.js*118*1*0**1<
+[54:30.429] Recv: >1413410070411*created<
+[54:30.429] Sent: >20*1413410070412*enable<
+[54:30.432] Recv: >1413410070412<
+[54:30.433] Sent: >76*1413410070413*openUrl*http://127.0.0.1:8020/TeamGenerator/javascript/main.js<
+[54:30.435] Recv: >1413410070413<
 ----------End of file----------
