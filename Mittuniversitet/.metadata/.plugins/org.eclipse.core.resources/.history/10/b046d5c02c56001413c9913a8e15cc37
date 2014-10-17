@@ -22,12 +22,12 @@ header img {
 	max-width: 15%;
 	max-height: 15%;
 }
-#genderwrapper {
+#wrapper {
 	width: 100%;
 	overflow: hidden;
 	table-layout: fixed;
 }
-#genderwrapper div {
+#wrapper div {
 	display: table-cell;
 	width: 472px;
 	vertical-align: middle
