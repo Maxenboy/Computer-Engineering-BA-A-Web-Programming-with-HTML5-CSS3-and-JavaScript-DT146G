@@ -1,55 +1,71 @@
 /*  Max Åberg
- mabe1411
- aaberg.max@gmail.com   */
+mabe1411
+aaberg.max@gmail.com   */
+
+//the variable that contains the URI string
 var text = "";
-var ok = false;
+//The variable that contains the number of teams provided by the user
 var nbrOfTeams = 0;
+//the variable that contains which type, provided by the user, of generation should be performed
 var choice = "";
-var rest;
-var minimumParticipants;
+//the variable that contains the end result of the generation
 var endResult = "";
+//the variable that contains the index, which the random function uses
 var index = 0;
+//the variable that contains the index for a man, which is used in the gender function
 var manindex = 0;
+//the variable that contains the index for a woman, which is used in the gender function
 var womenindex = 0;
+//the variable that contains an array where the different names are placed in each element, used by the random function
 var names = [];
+//the variable that contains an array where the different names are placed in each element, the elements order are changed
 var participants = [];
+//the variable that contains an array where the different men names are placed in each element
 var men = [];
-varwomen = [];
+//the variable that contains an array where the different women names are placed in each element
+var women = [];
 
+/*The functions that calls the function hide
+ * It's called when the start page is loaded
+ * Hide, hides the opposite generation textarea(s) */
 function init() {
-	while (!ok) {
-		hide();
-		nbrOfTeams = prompt("Please specify the number of teams that will participate:");
-		var pattern = /^[2-9]+$|[1-9][0-9]+$/;
-		if (!pattern.test(nbrOfTeams)) {
-			window.alert("Sorry, the input can only be numbers and at least 2");
-		} else {
-			ok = true;
-			localStorage.setItem('nbrOfTeams', nbrOfTeams);
-		}
-	}
+	hide();
 }
 
+/*The function hides the gender or the random variant of div depending on which radiobutton that's checked'*/
 function hide() {
-	if (document.getElementById("random").checked) {
-		document.getElementById("wrapper").setAttribute("class", "hidden");
-		document.getElementById("wrapper1").setAttribute("class", "");
+	if (document.getElementById("random").checked) {//checks if the radibutton random is checked/clicked
+		document.getElementById("genderwrapper").setAttribute("class", "hidden");
+		//applies the css class hidden to the gender div
+		document.getElementById("randomwrapper").setAttribute("class", "");
+		//removes the css class hidden to the random div
 	} else {
-		document.getElementById("wrapper1").setAttribute("class", "hidden");
-		document.getElementById("wrapper").setAttribute("class", "");
+		document.getElementById("randomwrapper").setAttribute("class", "hidden");
+		//applies the css class hidden to the random div
+		document.getElementById("genderwrapper").setAttribute("class", "");
+		//removes the css class hidden to the gender div
 	}
 }
 
+/*The function that calls the different functions depending on which radiobutton that is checked*/
 function generate() {
+	//stores the form part from the URI and replaces all newlines with \n
 	text = decodeURIComponent(window.location.search.substring(1)).replace(/\s+/g, '\\n');
+	//replaces all the +-signs with white-spaces
 	text = text.replace(/\+/g, ' ');
+	//searches and stores the part from the URI that states which radiobutto is checked
 	choice = text.substr(text.search("radio") + 6, 6);
+	//searches and stores the part from the URI that states how many teams the user provided
+	nbrOfTeams = text.substr(text.search("nbrOfTeams") + 11, text.search("radio") - 12);
+	//stores the number of teams to the local storage
+	localStorage.setItem('nbrOfTeams', nbrOfTeams);
 	if (choice == "random") {
+		//searches and stores the names given in the textarea, split on newline, returning an array with all the names in separate elements
 		names = text.substring(text.search("area") + 5, text.length).split("\\n");
 		names = names.filter(function(e) {/*Removes white-space elements*/
 			return (/\S+/).test(e);
 		});
-		localStorage.setItem('names', JSON.stringify(names));
+		localStorage.setItem('names', JSON.stringify(names)); //stores the names to the local storage, uses JSON to make a representative string of the object
 		random(names);
 	} else {
 		men = text.substring(text.search("mentext") + 8, text.search("womentext") - 1).split("\\n");
@@ -69,38 +85,9 @@ function generate() {
 function random(names) {
 	if (names.length !== 0 && names.length > localStorage.getItem('nbrOfTeams')) {
 		nbrOfTeams = localStorage.getItem('nbrOfTeams');
-		rest = names.length % nbrOfTeams;
-		minimumParticipants = Math.floor(names.length / nbrOfTeams);
-		switch(true) {
-		case (rest==1):
-			for ( i = 0; i < nbrOfTeams; i++) {
-				endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
-				for ( j = 0; j < minimumParticipants + rest; j++) {
-					index = Math.floor((Math.random() * names.length));
-					endResult += names[index] + "<br>";
-					names.splice(index, 1);
-				}
-				rest = 0;
-			}
-			break;
-		case (rest>1):
-			var count = 0;
-			for ( i = 0; i < nbrOfTeams; i++) {
-				endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
-				if (count < rest) {
-					arrayFetch(1);
-					count++;
-				} else {
-					arrayFetch(0);
-				}
-			}
-			break;
-		default:
-			for ( i = 0; i < nbrOfTeams; i++) {
-				endResult += ("<h1><u>Team " + (i + 1) + "</u></h1>");
-				arrayFetch(0);
-			}
-			break;
+		randomConcat(names);
+		for ( i = 0; i < participants.length; i++) {
+			endResult += participants[i];
 		}
 	} else {
 		endResult += "Sorry, the number of participants must be greater then the number of teams <br> Please close this tab to re-generate";
@@ -109,7 +96,7 @@ function random(names) {
 }
 
 function gender(men, women) {
-	if (men.length != 0 && women.length != 0 && (men.length + women.length) > localStorage.getItem('nbrOfTeams')) {
+	if (men.length !== 0 && women.length !== 0 && (men.length + women.length) > localStorage.getItem('nbrOfTeams')) {
 		nbrOfTeams = localStorage.getItem('nbrOfTeams');
 		concat(men, women);
 		for ( i = 0; i < participants.length; i++) {
@@ -121,25 +108,31 @@ function gender(men, women) {
 	document.getElementById("result").innerHTML = endResult;
 }
 
-function arrayFetch(diff) {
-	for ( j = 0; j < minimumParticipants + diff; j++) {
+function randomConcat(names) {
+	var team = 0;
+	for ( i = 0; i < nbrOfTeams; i++) {
+		participants.push("<h1><u>Team " + (i + 1) + "</u></h1>");
+	}
+	while (names.length > 0) {
 		index = Math.floor((Math.random() * names.length));
-		endResult += names[index] + "<br>";
+		participants[team] += (names[index]) + "<br>";
 		names.splice(index, 1);
+		team++;
+		if (team >= nbrOfTeams) {
+			team = 0;
+		}
 	}
 }
 
 function concat(men, women) {
 	var team = 0;
-	var test = 1;
 	for ( i = 0; i < nbrOfTeams; i++) {
 		participants.push("<h1><u>Team " + (i + 1) + "</u></h1>");
 	}
 	while (men.length > 0) {
 		manindex = Math.floor((Math.random() * men.length));
-		participants[team] += (men[manindex]) + test + "<br>";
+		participants[team] += (men[manindex]) + "<br>";
 		men.splice(manindex, 1);
-		test++;
 		team++;
 		if (team >= nbrOfTeams) {
 			team = 0;
@@ -147,9 +140,8 @@ function concat(men, women) {
 	}
 	while (women.length > 0) {
 		womenindex = Math.floor((Math.random() * women.length));
-		participants[team] += (women[womenindex]) + test + "<br>";
+		participants[team] += (women[womenindex]) + "<br>";
 		women.splice(womenindex, 1);
-		test++;
 		team++;
 		if (team >= nbrOfTeams) {
 			team = 0;
@@ -174,6 +166,14 @@ function view() {
 	}
 }
 
+function initiate() {
+	var path = window.location.pathname;
+	var page = path.substring(path.lastIndexOf('/') + 1);
+	if (page == "index.html") {
+		init();
+	}
+}
+
 window.addEventListener("load", switchOnRadio, false);
 window.addEventListener("load", view, false);
-window.addEventListener("load", init, false);
+window.addEventListener("load", initiate, false);

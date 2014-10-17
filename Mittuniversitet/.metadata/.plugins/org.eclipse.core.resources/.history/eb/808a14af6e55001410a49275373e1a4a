@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<!--  Max Åberg
+mabe1411
+aaberg.max@gmail.com   -->
+
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>TeamGenerator</title>
+		<link type="text/css" rel="stylesheet" href="css/main.css">
+		<link rel="shortcut icon" type="image/png" href="img/favicon.ico">
+		<script charset="UTF-8" src="javascript/main.js"></script>
+	</head>
+	<body>
+		<header>
+			<img src="img/logo.png" alt="TeamGenerator logo"/>
+		</header>
+		<section>
+			<div>
+				<div id="result">
+					
+				</div>
+				<div>
+
+				</div>
+			</div>
+		</section>
+		<footer>
+			Developed by Max Åberg
+			<br />
+			<a href="http://se.linkedin.com/pub/max-%C3%A5berg/65/a24/5a4" target="_blank"><img src="img/linkedin.png" alt="Linkedin icon"/></a>
+			<a href="//plus.google.com/u/0/103550752250811135751" target="_blank"><img src="img/googleplus.png" alt="GooglePlus icon"/></a>
+			<a href="https://www.facebook.com/max.aaberg" target="_blank"><img src="img/facebook.png" alt="Facebook icon"/></a>
+			<a href="https://github.com/Maxenboy" target="_blank"><img src="img/github.png" alt="Github icon"/></a>
+		</footer>
+	</body>
+</html>
