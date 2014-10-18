@@ -19,7 +19,7 @@ aaberg.max@gmail.com   -->
 		<section>
 			<form method="get" action="view.html" target="_blank" >
 				<p>
-					Number of teams (only numbers): <input type="number" name="nbrOfTeams" min="2" max="99" autofocus id="nbrOfTeams" autocomplete="off" required />
+					Number of teams (only numbers): <input type="number" name="nbrOfTeams" min="2" max="99" maxlength="2" autofocus pattern="[2-9]+|[1-9][0-9]+" id="nbrOfTeams" required />
 					<input type="radio" value="random" name="radio" id="random" checked>
 					Random
 					<input type="radio" value="gender" name="radio" id="gender">

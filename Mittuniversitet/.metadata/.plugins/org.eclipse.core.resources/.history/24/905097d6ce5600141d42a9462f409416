@@ -24,8 +24,6 @@ var participants = [];
 var men = [];
 //the variable that contains an array where the different women names are placed in each element
 var women = [];
-//the variable that acts as a teamindex string representation
-var team = 0;
 
 /*The functions that calls the function hide
  * It's called when the start page is loaded
@@ -111,23 +109,14 @@ function gender(men, women) {
 }
 
 function randomConcat(names) {
-	team = 0;
-	addHeading(localStorage.getItem('nbrOfTeams'));
-	pickCandidate(names,team,nbrOfTeams);
-}
-
-function concat(men, women) {
-	team = 0;
-	addHeading(localStorage.getItem('nbrOfTeams'));
-	pickCandidate(men,team,nbrOfTeams);
-	pickCandidate(women,team,nbrOfTeams);
-}
-
-function pickCandidate(array, team, nbrOfTeams){
-	while (array.length > 0) {
-		index = Math.floor((Math.random() * array.length));
-		participants[team] += (array[index]) + "<br>";
-		array.splice(index, 1);
+	var team = 0;
+	for ( i = 0; i < nbrOfTeams; i++) {
+		participants.push("<h1><u>Team " + (i + 1) + "</u></h1>");
+	}
+	while (names.length > 0) {
+		index = Math.floor((Math.random() * names.length));
+		participants[team] += (names[index]) + "<br>";
+		names.splice(index, 1);
 		team++;
 		if (team >= nbrOfTeams) {
 			team = 0;
@@ -135,11 +124,31 @@ function pickCandidate(array, team, nbrOfTeams){
 	}
 }
 
-function addHeading(iterations){
-	for ( i = 0; i < iterations; i++) {
+function concat(men, women) {
+	var team = 0;
+	for ( i = 0; i < nbrOfTeams; i++) {
 		participants.push("<h1><u>Team " + (i + 1) + "</u></h1>");
 	}
+	while (men.length > 0) {
+		manindex = Math.floor((Math.random() * men.length));
+		participants[team] += (men[manindex]) + "<br>";
+		men.splice(manindex, 1);
+		team++;
+		if (team >= nbrOfTeams) {
+			team = 0;
+		}
+	}
+	while (women.length > 0) {
+		womenindex = Math.floor((Math.random() * women.length));
+		participants[team] += (women[womenindex]) + "<br>";
+		women.splice(womenindex, 1);
+		team++;
+		if (team >= nbrOfTeams) {
+			team = 0;
+		}
+	}
 }
+
 
 function switchOnRadio() {
 	var path = window.location.pathname;
