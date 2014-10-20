@@ -30,12 +30,12 @@ var team = 0;
 /*The functions that calls the function hide
  * It's called when the start page is loaded
  * Hide, hides the opposite generation textarea(s) */
- function init() {
-     hide();
- }
+function init() {
+	hide();
+}
 
- /*The function hides the gender or the random variant of div depending on which radiobutton that's checked'*/
- function hide() {
+/*The function hides the gender or the random variant of div depending on which radiobutton that's checked'*/
+function hide() {
 	if (document.getElementById("random").checked) {//checks if the radibutton random is checked/clicked
 		document.getElementById("genderwrapper").setAttribute("class", "hidden");
 		//applies the css class hidden to the gender div
@@ -64,14 +64,21 @@ function generate() {
 	if (choice == "random") {
 		//searches and stores the names given in the textarea, split on newline, returning an array with all the names in separate elements
 		names = text.substring(text.search("area") + 5, text.length).split("\\n");
-		removeWhiteSpace(names);
-		localStorage.setItem('names', JSON.stringify(names)); //stores the names to the local storage, uses JSON to make a representative string of the object
+		names = names.filter(function(e) {/*Removes white-space elements*/
+			return (/\S+/).test(e);
+		});
+		localStorage.setItem('names', JSON.stringify(names));
+		//stores the names to the local storage, uses JSON to make a representative string of the object
 		random(names);
 	} else {
 		men = text.substring(text.search("mentext") + 8, text.search("womentext") - 1).split("\\n");
 		women = text.substring(text.search("womentext") + 10, text.search("area") - 1).split("\\n");
-		removeWhiteSpace(men);
-		removeWhiteSpace(names);
+		men = men.filter(function(e) {/*Removes white-space elements*/
+			return (/\S+/).test(e);
+		});
+		women = women.filter(function(e) {/*Removes white-space elements*/
+			return (/\S+/).test(e);
+		});
 		localStorage.setItem('men', JSON.stringify(men));
 		localStorage.setItem('women', JSON.stringify(women));
 		gender(men, women);
@@ -107,17 +114,17 @@ function gender(men, women) {
 function randomConcat(names) {
 	team = 0;
 	addHeading(localStorage.getItem('nbrOfTeams'));
-	pickCandidate(names,team,nbrOfTeams);
+	pickCandidate(names, team, nbrOfTeams);
 }
 
 function concat(men, women) {
 	team = 0;
 	addHeading(localStorage.getItem('nbrOfTeams'));
-	pickCandidate(men,team,nbrOfTeams);
-	pickCandidate(women,team,nbrOfTeams);
+	pickCandidate(men, team, nbrOfTeams);
+	pickCandidate(women, team, nbrOfTeams);
 }
 
-function pickCandidate(array, team, nbrOfTeams){
+function pickCandidate(array, team, nbrOfTeams) {
 	while (array.length > 0) {
 		index = Math.floor((Math.random() * array.length));
 		participants[team] += (array[index]) + "<br>";
@@ -129,33 +136,27 @@ function pickCandidate(array, team, nbrOfTeams){
 	}
 }
 
-function addHeading(iterations){
+function addHeading(iterations) {
 	for ( i = 0; i < iterations; i++) {
 		participants.push("<h1><u>Team " + (i + 1) + "</u></h1>");
 	}
 }
 
-function removeWhiteSpace(array){
-    array.filter(function(e) {/*Removes white-space elements*/
-        return (/\S+/).test(e);
-    });
-}
-
 function switchOnRadio() {
- var path = window.location.pathname;
- var page = path.substring(path.lastIndexOf('/') + 1);
- if (page == "index.html") {
-  document.getElementById("random").addEventListener("click", hide, false);
-  document.getElementById("gender").addEventListener("click", hide, false);
-}
+	var path = window.location.pathname;
+	var page = path.substring(path.lastIndexOf('/') + 1);
+	if (page == "index.html") {
+		document.getElementById("random").addEventListener("click", hide, false);
+		document.getElementById("gender").addEventListener("click", hide, false);
+	}
 }
 
 function view() {
- var path = window.location.pathname;
- var page = path.substring(path.lastIndexOf('/') + 1);
- if (page == "view.html") {
-  generate();
-}
+	var path = window.location.pathname;
+	var page = path.substring(path.lastIndexOf('/') + 1);
+	if (page == "view.html") {
+		generate();
+	}
 }
 
 function initiate() {
