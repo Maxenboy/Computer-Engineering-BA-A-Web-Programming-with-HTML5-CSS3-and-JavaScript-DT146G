@@ -73,6 +73,8 @@ function generate() {
 		removeWhiteSpace(women);
 		gender(men, women);
 	}
+    var audio =new Audio('../TeamGenerator/music/flyby.mp3');
+    audio.play();
     document.getElementById("result").innerHTML = endResult;
 }
 
