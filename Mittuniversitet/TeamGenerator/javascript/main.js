@@ -31,11 +31,11 @@ var team = 0;
  * It's called when the start page is loaded
  * Hide, hides the opposite generation textarea(s) */
  function init() {
-     hide();
- }
+   hide();
+}
 
- /*The function hides the gender or the random variant of div depending on which radiobutton that's checked'*/
- function hide() {
+/*The function hides the gender or the random variant of div depending on which radiobutton that's checked'*/
+function hide() {
 	if (document.getElementById("random").checked) {//checks if the radibutton random is checked/clicked
 		document.getElementById("genderwrapper").setAttribute("class", "hidden");
 		//applies the css class hidden to the gender div
@@ -65,17 +65,15 @@ function generate() {
 		//searches and stores the names given in the textarea, split on newline, returning an array with all the names in separate elements
 		names = text.substring(text.search("area") + 5, text.length).split("\\n");
 		removeWhiteSpace(names);
-		localStorage.setItem('names', JSON.stringify(names)); //stores the names to the local storage, uses JSON to make a representative string of the object
 		random(names);
 	} else {
 		men = text.substring(text.search("mentext") + 8, text.search("womentext") - 1).split("\\n");
 		women = text.substring(text.search("womentext") + 10, text.search("area") - 1).split("\\n");
 		removeWhiteSpace(men);
-		removeWhiteSpace(names);
-		localStorage.setItem('men', JSON.stringify(men));
-		localStorage.setItem('women', JSON.stringify(women));
+		removeWhiteSpace(women);
 		gender(men, women);
 	}
+    document.getElementById("result").innerHTML = endResult;
 }
 
 function random(names) {
@@ -88,7 +86,7 @@ function random(names) {
 	} else {
 		endResult += "Sorry, the number of participants must be greater then the number of teams <br> Please close this tab to re-generate";
 	}
-	document.getElementById("result").innerHTML = endResult;
+	
 }
 
 function gender(men, women) {
@@ -101,7 +99,6 @@ function gender(men, women) {
 	} else {
 		endResult += "Sorry, the number of participants must be greater then the number of teams <br> Please close this tab to re-generate";
 	}
-	document.getElementById("result").innerHTML = endResult;
 }
 
 function randomConcat(names) {
@@ -136,26 +133,29 @@ function addHeading(iterations){
 }
 
 function removeWhiteSpace(array){
-    array.filter(function(e) {/*Removes white-space elements*/
-        return (/\S+/).test(e);
-    });
+    for( i = 0; i < array.length; i++){
+        if (array[i].length < 1 ){
+            array.splice(i, 1);
+        }
+    }
+    
 }
 
 function switchOnRadio() {
- var path = window.location.pathname;
- var page = path.substring(path.lastIndexOf('/') + 1);
- if (page == "index.html") {
-  document.getElementById("random").addEventListener("click", hide, false);
-  document.getElementById("gender").addEventListener("click", hide, false);
-}
+   var path = window.location.pathname;
+   var page = path.substring(path.lastIndexOf('/') + 1);
+   if (page == "index.html") {
+      document.getElementById("random").addEventListener("click", hide, false);
+      document.getElementById("gender").addEventListener("click", hide, false);
+  }
 }
 
 function view() {
- var path = window.location.pathname;
- var page = path.substring(path.lastIndexOf('/') + 1);
- if (page == "view.html") {
-  generate();
-}
+   var path = window.location.pathname;
+   var page = path.substring(path.lastIndexOf('/') + 1);
+   if (page == "view.html") {
+      generate();
+  }
 }
 
 function initiate() {
