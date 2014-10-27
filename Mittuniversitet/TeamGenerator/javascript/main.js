@@ -155,7 +155,7 @@ function pickCandidate(array, team, nbrOfTeams){
 function addHeading(iterations){
 	for ( i = 0; i < iterations; i++) { //makes the headings
         //adds the heading to the and array
-        participants.push("<h1><u>Team " + (i + 1) + "</u></h1>");
+        participants.push('<h1 contenteditable="true" ><u>Team ' + (i + 1) + '</u></h1>');
     }
 }
 //the function that removes all the empty strings in a given array
